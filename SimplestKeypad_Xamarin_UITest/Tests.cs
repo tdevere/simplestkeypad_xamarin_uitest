@@ -12,7 +12,7 @@ namespace SimplestKeypad_Xamarin_UITest
     public class Tests
     {
         IApp app;
-        Platform platform;
+        readonly Platform platform;
 
         public Tests(Platform platform)
         {
@@ -32,6 +32,15 @@ namespace SimplestKeypad_Xamarin_UITest
             app.Screenshot("Welcome screen.");
 
             Assert.IsTrue(results.Any());
+        }
+
+        [Test]
+        public void PressEachButton()
+        {
+            //app.
+            //AppResult[] results = app.ScrollUpTo(c => c.)
+
+            //Assert.IsTrue(results.Any());
         }
     }
 }

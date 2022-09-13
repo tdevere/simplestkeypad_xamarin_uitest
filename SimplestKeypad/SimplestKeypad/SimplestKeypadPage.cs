@@ -5,8 +5,8 @@ namespace SimplestKeypad
 {
     public class SimplestKeypadPage : ContentPage
     {
-        Label displayLabel;
-        Button backspaceButton;
+        readonly Label displayLabel;
+        readonly Button backspaceButton;
 
         public SimplestKeypadPage()
         {
@@ -14,8 +14,9 @@ namespace SimplestKeypad
             StackLayout mainStack = new StackLayout
             {
                 VerticalOptions = LayoutOptions.Center,
-                HorizontalOptions = LayoutOptions.Center
+                HorizontalOptions = LayoutOptions.Center                
             };
+            
 
             // First row is the Label.
             displayLabel = new Label
@@ -39,13 +40,14 @@ namespace SimplestKeypad
             // Now do the 10 number keys.
             StackLayout rowStack = null;
 
-            for (int num = 1; num <= 10; num++)
+            for (int num = 1; num <= 100; num++)
             {
                 if ((num - 1) % 3 == 0)
                 {
                     rowStack = new StackLayout
                     {
-                        Orientation = StackOrientation.Horizontal
+                        Orientation = StackOrientation.Horizontal                        
+                        
                     };
                     mainStack.Children.Add(rowStack);
                 }
@@ -64,9 +66,26 @@ namespace SimplestKeypad
                     digitButton.HorizontalOptions = LayoutOptions.FillAndExpand;
                 }
                 rowStack.Children.Add(digitButton);
+
             }
 
-            this.Content = mainStack;
+            Button btnFindMe = new Button
+            {
+                Text = ("You Found Me"),
+                FontSize = Device.GetNamedSize(NamedSize.Large, typeof(Button)),
+                StyleId = (1 % 10).ToString()
+            };
+            btnFindMe.Clicked += OnDigitButtonClicked;
+
+            rowStack.Children.Add(btnFindMe);
+
+            ScrollView sv = new ScrollView();
+            sv.Content = mainStack;
+
+            
+
+            //this.Content = mainStack;
+            this.Content = sv;
         }
 
         void OnDigitButtonClicked(object sender, EventArgs args)

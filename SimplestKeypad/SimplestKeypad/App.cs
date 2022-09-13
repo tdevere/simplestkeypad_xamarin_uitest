@@ -8,6 +8,7 @@ namespace SimplestKeypad
         public App()
         {
             MainPage = new SimplestKeypadPage();
+            
         }
 
         protected override void OnStart()
