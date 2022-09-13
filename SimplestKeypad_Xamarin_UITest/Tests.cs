@@ -35,12 +35,12 @@ namespace SimplestKeypad_Xamarin_UITest
         }
 
         [Test]
-        public void PressEachButton()
+        public void ScrollButtonTest()
         {
-            //app.
-            //AppResult[] results = app.ScrollUpTo(c => c.)
 
-            //Assert.IsTrue(results.Any());
+            app.ScrollUpTo(c => c.Marked("btnFindMe"));
+            app.Tap(c => c.Marked("btnFindMe"));
+            app.Screenshot("You Found Me Test");
         }
     }
 }
